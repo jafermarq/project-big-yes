@@ -58,3 +58,14 @@ And then run (note you need your host machine to have [Nvidia docker runtime](ht
 ```shell
 docker run -it --rm --gpus all flwr-spc
 ```
+
+Will work ok until the point when the finteuning starts, throwing error:
+
+```shell
+[...]
+  File "/usr/local/lib/python3.11/dist-packages/torch/_inductor/async_compile.py", line 447, in _wait_futures
+    raise RuntimeError(
+torch._inductor.exc.InductorError: RuntimeError: A compilation subprocess exited unexpectedly. This is likely due to a crash. To facilitate debugging, you can re-run with TORCHINDUCTOR_COMPILE_THREADS=1 to cause compilation to occur in the main process.
+
+Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+```

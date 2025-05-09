@@ -26,18 +26,10 @@ python finetune.py
 # python finetune_unsloth.py
 ```
 
-Expect a log as follows:
+Expect a log as follows showing the avg training loss every 50 batches:
 
 ```shell
-INFO :      ClientApp starting finetuning for max_steps = 128
-INFO :      Loss @ step 1: 0.03630468621850014
-INFO :      Loss @ step 51: 0.0173868155015596
-INFO :      Loss @ step 101: 0.012874344018020548
-INFO :      Loss @ step 151: 0.010948779425330905
-INFO :      Loss @ step 201: 0.009750205277469916
-INFO :      Loss @ step 251: 0.008826215206033204
-INFO :      Loss @ step 301: 0.008233535046259134
-INFO :      Final finetuning loss: 0.00789468717959726
+Flower finetune losses: [0.035802897065877914, 0.016872126170817542, 0.012768076635934043, 0.01073403720318383, 0.009541337469833629, 0.00869496681438054, 0.008089264186464275]
 ```
 
 Expect log as follows if you use the `finetune_unsloth.py` script:

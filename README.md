@@ -71,6 +71,7 @@ INFO :      Final train loss: 1.8917758977040648
 
 ```shell
 docker build -t flwr-spc .
+# use instead unsloth.dockerfile for the Unsloth LLM finetuning setup
 ```
 
 And then run (note you need your host machine to have [Nvidia docker runtime](https://developer.nvidia.com/container-runtime)). By default the ViT finetuning will be exectued:

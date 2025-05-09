@@ -84,7 +84,7 @@ docker build -t flwr-spc .
 And then run (note you need your host machine to have [Nvidia docker runtime](https://developer.nvidia.com/container-runtime)). By default the ViT finetuning will be exectued:
 
 ```shell
-docker run --shm-size=10 -it --rm --gpus all flwr-spc
+docker run --shm-size=1g -it --rm --gpus all flwr-spc
 ```
 
 Unsloth LLM finetuning will work ok until the point when the finteuning starts, throwing error:

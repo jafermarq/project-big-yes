@@ -1,11 +1,11 @@
 import numpy as np
 import torch
-from datasets import load_dataset
+from datasets import load_from_disk
 from flwr.client import ClientApp
 from flwr.common import (Array, ArrayRecord, ConfigRecord, Context, Message,
                          RecordDict)
 from torch.utils.data import DataLoader
-from torchvision.models import ViT_B_16_Weights, vit_b_16
+from torchvision.models import vit_b_16
 from torchvision.transforms import (Compose, Normalize, RandomResizedCrop,
                                     ToTensor)
 
@@ -49,7 +49,8 @@ def train(net, trainloader, optimizer, epochs, device) -> list[float]:
 def task(local_epochs: int) -> list[float]:
 
     # Instantiate a pre-trained ViT-B on ImageNet
-    model = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1)
+    model = vit_b_16()
+    model.load_state_dict(torch.load('vit.pth'))
 
     # We're going to federated the finetuning of this model
     # let's freeze everything except the head
@@ -61,7 +62,7 @@ def task(local_epochs: int) -> list[float]:
     # Now enable just for output head
     model.heads.requires_grad_(True)
 
-    train_data = load_dataset("Honaker/eurosat_dataset", split="train")
+    train_data = load_from_disk("./eurosat_dataset")
 
     trainset = train_data.with_transform(apply_train_transforms)
 

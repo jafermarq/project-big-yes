@@ -20,6 +20,14 @@ pip install flwr==1.18.0
 
 Either finetune a ViT or an LLM.
 
+For ViT, ensure you first have a local copy of the dataset and model. This primarily done so the Docker cotaniner built for the ViT doesn't require internet access.
+
+```shell
+python -c "from datasets import load_dataset; dd=load_dataset('Honaker/eurosat_dataset', split='train', cache_dir='./eurosat_dataset'); dd.save_to_disk('./eurosat_dataset')"
+python -c "import torch; from torchvision.models import vit_b_16, ViT_B_16_Weights; model=vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1); torch.save(model.state_dict(), 'vit.pth')"
+```
+
+
 ```shell
 python finetune.py
 # or the below for an LLM

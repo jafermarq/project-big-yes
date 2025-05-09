@@ -1,5 +1,15 @@
 ### Install dependencies
 
+
+If finetuning the ViT:
+```shell
+pip install torch==2.7.0 torchvision==0.22.0
+pip install transformers==4.51.3 datasets==3.6.0
+pip install flwr==1.18.0
+```
+
+If finetuning an LLM with Unsloth:
+
 ```shell
 pip install torch==2.7.0 torchvision==0.22.0
 pip install unsloth==2025.4.7

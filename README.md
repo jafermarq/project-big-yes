@@ -8,11 +8,29 @@ pip install flwr==1.18.0
 
 ### Run
 
+Either finetune a ViT or an LLM.
+
 ```shell
 python finetune.py
+# or the below for an LLM
+# python finetune_unsloth.py
 ```
 
-Expect log as follows:
+Expect a log as follows:
+
+```shell
+INFO :      ClientApp starting finetuning for max_steps = 128
+INFO :      Loss @ step 1: 0.03630468621850014
+INFO :      Loss @ step 51: 0.0173868155015596
+INFO :      Loss @ step 101: 0.012874344018020548
+INFO :      Loss @ step 151: 0.010948779425330905
+INFO :      Loss @ step 201: 0.009750205277469916
+INFO :      Loss @ step 251: 0.008826215206033204
+INFO :      Loss @ step 301: 0.008233535046259134
+INFO :      Final finetuning loss: 0.00789468717959726
+```
+
+Expect log as follows if you use the `finetune_unsloth.py` script:
 
 ```shell
 🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
@@ -53,13 +71,13 @@ INFO :      Final train loss: 1.8917758977040648
 docker build -t flwr-spc .
 ```
 
-And then run (note you need your host machine to have [Nvidia docker runtime](https://developer.nvidia.com/container-runtime)):
+And then run (note you need your host machine to have [Nvidia docker runtime](https://developer.nvidia.com/container-runtime)). By default the ViT finetuning will be exectued:
 
 ```shell
 docker run -it --rm --gpus all flwr-spc
 ```
 
-Will work ok until the point when the finteuning starts, throwing error:
+Unsloth LLM finetuning will work ok until the point when the finteuning starts, throwing error:
 
 ```shell
 [...]
